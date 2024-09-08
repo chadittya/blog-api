@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - FLASK_APP=app/__init__.py
+      - FLASK_DEBUG=1
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_HOST=${MONGO_HOST}
+      - MONGO_DB=${MONGO_DB}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    volumes:
+      - ./static:/app/static
+
